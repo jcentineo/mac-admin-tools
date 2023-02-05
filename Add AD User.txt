@@ -1,0 +1,23 @@
+##verify connection to AD, run the following, change the username
+id USERNAME
+ 
+##create the user
+/System/Library/CoreServices/ManagedClient.app/Contents/Resources/createmobileaccount -a ADMINUSERNAME -U CURRENTPWD -n USERNAME
+ 
+##cache the user
+dscacheutil -q user -a name USERNAME
+ 
+##login as the user in terminal. will be prompted to enter password right after running this.
+login USERNAME
+ 
+##if the above worked, logout of the user
+logout
+ 
+##confirm FileVault is configured
+sudo profiles status -type bootstraptoken
+ 
+##IF NOT, run this command
+sudo fdesetup enable
+ 
+##Check to verify that the user can unlock FileVault
+sysadminctl -secureTokenStatus USERNAME

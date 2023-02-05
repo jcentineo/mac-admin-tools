@@ -1,0 +1,6 @@
+#Investigate Recent Shutdowns
+#1. Open Terminal
+#2. Run the command below
+#3. All shutdowns will be reported with the code of why they shutdown. Google search the specific error code. 
+
+log show --predicate 'eventMessage contains "Previou s shutdown cause"' --last 24h
